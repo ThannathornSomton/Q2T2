@@ -1,7 +1,9 @@
-
 Dot dot;
 Fish fish;
+ArrayList<Dot> dots = new ArrayList<Dot>();
+boolean fc = false;
 PImage img;
+
 void setup() {
   size(800,600);
   frameRate(60);
@@ -11,8 +13,7 @@ void setup() {
   //fish.setTarget(new Vector(width,height));
   img = loadImage("fish.png");
 }
-ArrayList<Dot> dots = new ArrayList<Dot>();
-boolean fc = false;
+
 void draw() {
   if (fc && !mousePressed) {
       dots.add(dot);
@@ -22,9 +23,7 @@ void draw() {
       rect(0,0,width,height/4);
       fill(0);
       rect(0,height/4,width,height);
-    if (dots.size() > 0) {
-     
-     
+    if (dots.size() > 0) {    
       for (int i = 0; i < dots.size(); i++) {
         Dot dot = dots.get(i);
         if (dot.pos.y > height/4) {
@@ -39,11 +38,13 @@ void draw() {
        if (dots.size() > 0) fish.setTarget(dots.get(0));
     }
     fish.update();
+    
   if (mousePressed) { 
     if(fish.overBox == true) {
       fish.setPos(new Vector(mouseX,mouseY));
     }
   }
+  
   if(frameCount % 30 == 0 ) {
     println(fish.overBox);
 

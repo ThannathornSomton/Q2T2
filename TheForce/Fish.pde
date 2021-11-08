@@ -1,4 +1,5 @@
 class Fish {
+  
   float mass;
   float diameter;
   float ddd;
@@ -6,6 +7,8 @@ class Fish {
   Dot dot;
   Vector velo,pos,acc,tar;
   boolean overBox = false;
+  float ox,oy;
+  
   Fish(Vector p,Vector v,Vector a,float m,float d) {
     mass = m;
     ddd = d;
@@ -15,14 +18,17 @@ class Fish {
     acc = a;
     tar = new Vector(width-300,height-300);
   }
+  
   void setTarget(Dot dot) {
     this.dot = dot;
     tar = dot.pos;
   }
+  
   void addForce(Vector force) {
     acc.x += force.x / mass;
     acc.y += force.y / mass;
   }
+  
   void update() {
     //velo.add(acc); 
     if(mouseX >= this.pos.x-diameter/2 && mouseX <= this.pos.x+diameter/2 && mouseY >= this.pos.y-diameter/2 && mouseY <= this.pos.y+diameter/2)
@@ -67,7 +73,8 @@ class Fish {
     acc.x = 0;
     acc.y = 0;
   }
-  float ox,oy;
+
+  
   void move(Vector posttomove) {
     pos = posttomove;
       /*
@@ -82,6 +89,7 @@ class Fish {
       oy = pos.y;
     
   }
+  
   void setPos(Vector postoset) {
     pos = postoset;
       /*

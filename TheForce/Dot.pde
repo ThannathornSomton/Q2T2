@@ -1,7 +1,10 @@
 class Dot {
+  
   float mass;
   float diameter;
+  float ox,oy;
   Vector velo,pos,acc;
+  
   Dot(Vector p,Vector v,Vector a,float m,float d) {
     mass = m;
     diameter = d;
@@ -9,10 +12,12 @@ class Dot {
     pos = p;
     acc = a;
   }
+  
   void addForce(Vector force) {
     acc.x += force.x / mass;
     acc.y += force.y / mass;
   }
+  
   void update() {
     velo.add(acc); 
     pos.add(velo);
@@ -35,8 +40,8 @@ class Dot {
     setPos(pos);
     acc.x = 0;
     acc.y = 0;
-  }
-  float ox,oy;
+  }  
+
   void move(Vector posttomove) {
     pos = posttomove;
     if (pos.x != ox || pos.y != oy) {
@@ -52,6 +57,7 @@ class Dot {
       oy = pos.y;
     }
   }
+  
   void setPos(Vector postoset) {
     pos = postoset;
     if (pos.x != ox || pos.y != oy) {
@@ -65,4 +71,5 @@ class Dot {
       oy = pos.y;
     }
   }
+  
 }
